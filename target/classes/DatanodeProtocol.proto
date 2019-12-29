@@ -1,0 +1,28 @@
+syntax = "proto3";
+package cn.zrtcx.miniHDFS.protobuf;
+option java_package = "cn.zrtcx.miniHDFS.protobuf";
+option java_outer_classname = "DatanodeProtocolProbuf";
+
+import "BaseProtocol.proto";
+
+message RegisterRequestProto {
+    IdProto id = 1;
+}
+
+message RegisterResponseProto {
+    bool isSuccessful = 1;
+}
+
+message HeartbeatRequestProto {
+    IdProto id = 1;
+    bool hasRegistered = 2;
+}
+
+message HeartbeatResponseProto {
+    bool isSuccessful = 1;
+}
+
+service DatanodeProtocol {
+    rpc register(RegisterRequestProto) returns(RegisterResponseProto);
+    rpc heartbeat(HeartbeatRequestProto) returns(HeartbeatResponseProto);
+}

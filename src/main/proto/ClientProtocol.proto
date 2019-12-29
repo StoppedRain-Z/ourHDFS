@@ -1,0 +1,64 @@
+syntax = "proto3";
+package cn.zrtcx.miniHDFS.protobuf;
+option java_package = "cn.zrtcx.miniHDFS.protobuf";
+option java_outer_classname = "ClientProtocolProbuf";
+
+import "BaseProtocol.proto";
+
+message CdRequestProto {
+    PathProto path = 1;
+}
+
+message CdResponseProto {
+    PathProto path = 1;
+    bool isSuccessful = 2;
+}
+
+message LsRequestProto {
+    PathProto path = 1;
+}
+
+message LsResponseProto {
+    repeated PathProto path = 1;
+}
+
+message MkdirRequestProto {
+    repeated PathProto path = 1;
+}
+
+message MkdirResponseProto {
+}
+
+message GetRequestProto {
+    string src = 1;
+}
+
+message GetResponseProto {
+    repeated BlockProto blocks = 1; 
+}
+
+message PutRequestProto {
+    string src = 1; 
+    uint64 length = 2; 
+}
+
+message PutResponseProto {
+    repeated BlockProto blocks = 1; 
+}
+
+message RmRequestProto {
+    repeated PathProto path = 1;
+}
+
+message RmResponseProto {
+    bool isSuccessful = 1;
+}
+
+service ClientProtocol {
+    rpc cd(CdRequestProto) returns(CdResponseProto);
+    rpc ls(LsRequestProto) returns(LsResponseProto);
+    rpc mkdir(MkdirRequestProto) returns(MkdirResponseProto);
+    rpc get(GetRequestProto) returns(GetResponseProto);
+    rpc put(PutRequestProto) returns(PutResponseProto);
+    rpc rm(RmRequestProto) returns(RmResponseProto);
+}

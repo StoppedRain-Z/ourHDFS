@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <namenode_ip>49.232.80.245</namenode_ip>
+    <datanode_ip>192.144.212.191</datanode_ip>
+    <namenode_src_path>/home/ubuntu/namenode</namenode_src_path>
+    <datanode_src_path>/home/ubuntu/datanode</datanode_src_path>
+    <rpc_port>23333</rpc_port>
+    <socket_port>23334</socket_port>
+</root>

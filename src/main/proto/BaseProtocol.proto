@@ -1,0 +1,22 @@
+syntax = "proto3";
+package cn.zrtcx.miniHDFS.protobuf;
+option java_package = "cn.zrtcx.miniHDFS.protobuf";
+option java_outer_classname = "BaseProtocolProbuf";
+
+message PathProto{
+	string src = 1;
+	bool hasPermission = 2;
+}
+
+message IdProto {
+    string ip = 1;
+    uint32 rpcPort = 2; 
+    uint32 socketPort = 3; 
+}
+
+message BlockProto {
+    IdProto id = 1;
+    string src = 2;
+    uint64 offset = 3;
+    uint64 length = 4;
+}
